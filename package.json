@@ -1,0 +1,32 @@
+{
+  "name": "weex-router",
+  "version": "1.0.0",
+  "description": "weex router",
+  "author": "bofei.zq",
+  "main":"./index.js",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weexteam/weex-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/weexteam/weex-components/issues"
+  },
+  "scripts": {
+
+  },
+  "dependencies": {
+    "path-to-regexp": "^1.6.0",
+    "query-string": "4.2.3",
+    "history": "^4.3.0"
+  },
+
+  "keywords": [
+    "weex",
+    "webcomponents",
+    "javascript",
+    "html5",
+    "android",
+    "ios"
+  ]
+}
