@@ -1,0 +1,41 @@
+<template>
+  <div onclick="handleClick">
+    <slot></slot>
+  </div>
+</template>
+<script>
+  var History = require('./js/history')
+  function createLocationDescriptor (to) {
+    return { pathname: to }
+  }
+  module.exports =  {
+    name: 'LinkTo',
+    props: ['to'],
+    created: function () {
+      console.log(this)
+    },
+    methods: {
+      handleClick: function (event) {
+        console.log("click")
+        var history = History.getHistoryInstance()
+        if (history) {
+          if (history.location.pathname !== this.to) {
+            const location = createLocationDescriptor(this.to)
+            console.log("push",location)
+            history.push(location)
+          }
+        }
+      }
+    },
+    destroyed () {
+    }
+  }
+</script>
+
+<style>
+  a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+</style>
