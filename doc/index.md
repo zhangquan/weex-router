@@ -77,19 +77,12 @@ Router负责监听地址的变化，执行跳转运画，渲染页面
 
 ```
 
-- activeClassName: string
-当此link的地址和页面地址相匹配时，应用的样式className
-```html
-
-<link to="/courses" className="course-link" activeClassName="active">课程</link>
-
-```
 
 - animated: boolean 是否使用动画效果
 
 ```html
 true
-<link to="/courses" animated="">课程</link>
+<link to="/courses" animated="ture">课程</link>
 
 ```
 
