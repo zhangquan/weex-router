@@ -12,7 +12,7 @@
     abstract: true,
     created () {
       var history = History.createHistory(false)
-      const unlisten = history.listen(() => {
+      const unlisten = history.listen((location, action) => {
         unlisten()
         navigator.reload(location.href)
       })
