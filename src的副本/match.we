@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <content></content>
+  </div>
+</template>
+
+
+<script>
+var  matchPattern = require('./js/matchPattern')
+var History = require('./js/history')
+
+module.exports =  {
+  name: 'Match',
+  data:{
+    pattern:""
+  },
+  abstract: true,
+  created:function () {
+
+  },
+
+  shouldUpdate: function () {
+    const pattern = this.pattern
+    var history = History.getHistoryInstance()
+    if (history&&this.pattern) {
+      var location = history.location
+      const match = matchPattern(pattern, location, false, false)
+      if (match && match.isExact) {
+       return true
+      }
+    }
+  },
+
+  destroyed: function () {
+  }
+}
+</script>

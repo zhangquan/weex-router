@@ -16,6 +16,7 @@
     },
     methods: {
       handleClick: function (event) {
+        console.log("click")
         var history = History.getHistoryInstance()
         if (history) {
           if (history.location.pathname !== this.to) {

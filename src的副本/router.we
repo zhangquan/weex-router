@@ -1,21 +1,23 @@
 <template>
   <div>
-    <home></home>
+    <content></content>
   </div>
 </template>
 
 <script>
   var History = require('./js/history')
   var navigator = require('@weex-module/navigator')
-
   module.exports =  {
     abstract: true,
+
     created () {
       var history = History.createHistory(false)
+
       const unlisten = history.listen(() => {
         unlisten()
         navigator.reload(location.href)
       })
+
     }
   }
 

@@ -4,7 +4,6 @@
   </div>
 </template>
 
-
 <script>
   module.export =   {
     name: 'detail',
@@ -13,7 +12,6 @@
     }
   }
 </script>
-
 
 <style>
   .detail{
