@@ -14,7 +14,15 @@
       var history = History.createHistory(false)
       const unlisten = history.listen((location, action) => {
         unlisten()
-        navigator.reload(location.href)
+        var config = this.$getConfig();
+        var platform = config.env.platform
+        if(platform == "Web"){
+          navigator.reload(config.bundleUrl, location)
+        }
+        else {
+          navigator.push(config.bundleUrl, location)
+        }
+        
       })
     }
   }
