@@ -10,14 +10,16 @@
 
 ```html
 <template>
-  <router>
-      <div class="nav">
-        <link to="/home">home</link>
-        <link to="/about">about</link>
-      </div>
-      <match pattern="/home"><Home></Home></match>
-      <match pattern="/about"><About></About></match>
-  </router>
+  <div>
+      <router>
+          <div class="nav">
+            <link to="/home">home</link>
+            <link to="/about">about</link>
+          </div>
+          <match pattern="/home"><home></home></match>
+          <match pattern="/about"><about></about></match>
+      </router>
+  </div>
 </templater>
 
 <script>

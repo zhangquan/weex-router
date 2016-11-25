@@ -8,7 +8,7 @@
   const History = require('./js/history')
   const navigator = require('@weex-module/navigator')
   const Navigator = require('./js/navigator')
-
+  const pathUtils = require('./js/pathUtils')
   function addTimestamp(url){
     if(/_w_r_t_/.test(url)){
       url = url.replace(/_w_r_t_=\d+/, '_w_r_t_='+Date.now())
@@ -30,29 +30,25 @@
     },
     created: function() {
       var config = this.$getConfig()
-      var platform = config.env.platform
-      var baseURL = config.bundleUrl.split("#")[0]
-      var history = History.createHistory(this.basename, navigator)
+      var bundleUrl = decodeURIComponent(config.bundleUrl);
+      var baseURL = bundleUrl.split("#")[0]
+      var history = History.createHistory(this.basename, pathUtils.getRealURL(config.bundleUrl), navigator)
 
-      const unlisten = history.listen((location, action) => {
+      const unlisten = history.listen(function (location, action)  {
         unlisten()
-        var url = baseURL
-//        url = addTimestamp(url)
-//        url+= "#"+location.pathname
-//        console.log(location)
+        var currentUrl = baseURL
+        currentUrl = addTimestamp(currentUrl)
+        currentUrl += "#"+location.pathname
         if(action.toLowerCase() == "push"){
-          Navigator.push(url)
+          Navigator.push(currentUrl, {
+            animated:location.state.animated
+          })
         }
         else if(action.toLowerCase() == "pop"){
-          Navigator.pop(url)
+          Navigator.pop(currentUrl, {
+            animated:true
+          })
         }
-
-//        if(platform == "Web"){
-//          navigator.reload(config.bundleUrl, location)
-//        }
-//        else {
-//          navigator.push(config.bundleUrl+"#"+location.href, location)
-//        }
 
       })
     }

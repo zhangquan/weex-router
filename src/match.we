@@ -1,5 +1,5 @@
 <template>
-  <div if = {isMatch}>
+  <div if = "{{isMatch}}">
     <content></content>
   </div>
 </template>
@@ -7,6 +7,7 @@
 
 <script>
 var  matchPattern = require('./js/matchPattern')
+var pathUtils = require('./js/pathUtils')
 var History = require('./js/history')
 
 module.exports =  {
@@ -21,13 +22,18 @@ module.exports =  {
   computed: {
     isMatch: {
       get: function() {
+        var config = this.$getConfig()
+        var url = pathUtils.getRealURL(config.bundleUrl)
         const pattern = this.pattern
-        var history = History.getHistoryInstance()
-        if (history&&this.pattern) {
-          var location = history.location
+        if (this.pattern) {
+          var location = pathUtils.parsePath(url)
+          console.log(location, this.pattern)
           const match = matchPattern(pattern, location, false, false)
           if (match && match.isExact) {
             return true
+          }
+          else {
+            return false
           }
         }
       },

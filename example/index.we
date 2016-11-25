@@ -3,11 +3,18 @@
     <router class="app">
       <div class="app">
         <div class="nav">
+
+            <linkto  to = "/" class="link">
+              <text class="title">home</text>
+            </linkto>
             <linkto  to = "/detail" class="link">
               <text class="title">detail</text>
             </linkto>
             <linkto  to = "/about" class="link">
               <text class="title">about</text>
+            </linkto>
+            <linkto  action="pop" class="link">
+              <text class="title">back</text>
             </linkto>
         </div>
 
@@ -35,22 +42,18 @@
 .title{
   text-align: center;
   height: 50;
+  margin: 20;
 }
 
 .nav{
   text-align: center;
-  background: red;
-  height: 50;
+  background-color: red;
+  padding: 20;
 
 }
 .link{
-  width: 100px;
   height: 50;
-  line-height: 50px;
   color: #fff;
-  vertical-align: middle;
-  font-size: 2rem;
-  font-weight: bolder;
 }
 
 
