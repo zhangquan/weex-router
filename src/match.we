@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div if = {isMatch}>
     <content></content>
   </div>
 </template>
@@ -18,7 +18,24 @@ module.exports =  {
   created:function () {
 
   },
+  computed: {
+    isMatch: {
+      get: function() {
+        const pattern = this.pattern
+        var history = History.getHistoryInstance()
+        if (history&&this.pattern) {
+          var location = history.location
+          const match = matchPattern(pattern, location, false, false)
+          if (match && match.isExact) {
+            return true
+          }
+        }
+      },
 
+      set: function(v) {
+      }
+    }
+  },
   shouldUpdate: function () {
     const pattern = this.pattern
     var history = History.getHistoryInstance()

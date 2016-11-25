@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  require("weex-router")
+  require("../index")
 </script>
 
 
