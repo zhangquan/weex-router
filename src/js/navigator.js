@@ -8,7 +8,7 @@ module.exports = {
     console.log(url)
     Navigator.push({
       url:url,
-      animated : true
+      animated : options.animated ? "true" : "false"
     }, function(){})
   },
 
@@ -16,7 +16,7 @@ module.exports = {
     options = options? options :{}
     const Navigator = history.getNavigator()
     var params = {
-      animated : true
+      animated : options.animated ? "true" : "false"
     }
     Navigator.pop(params, function(){})
   }
