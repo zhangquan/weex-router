@@ -9,7 +9,7 @@ const cache = {
 
 const getMatcher = function(pattern, exactly)  {
   const exactlyStr = exactly ? 'true' : 'false'
-  let matcher = cache[exactlyStr].get(pattern)
+  var matcher = cache[exactlyStr].get(pattern)
 
   if (!matcher) {
     const keys = []
