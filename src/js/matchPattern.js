@@ -7,7 +7,7 @@ const cache = {
   false: new MatcherCache()
 }
 
-const getMatcher = (pattern, exactly) => {
+const getMatcher = function(pattern, exactly)  {
   const exactlyStr = exactly ? 'true' : 'false'
   let matcher = cache[exactlyStr].get(pattern)
 
@@ -21,13 +21,14 @@ const getMatcher = (pattern, exactly) => {
   return matcher
 }
 
-const parseParams = (pattern, match, keys) =>
-  match.slice(1).reduce((params, value, index) => {
+const parseParams = function(pattern, match, keys) {
+  return match.slice(1).reduce(function(params, value, index)  {
     params[keys[index].name] = decodeURIComponent(value)
     return params
   }, {})
+}
 
-const matchPattern = (pattern, location, matchExactly, parent) => {
+const matchPattern = function(pattern, location, matchExactly, parent)  {
   const specialCase = !matchExactly && pattern === '/'
 
   if (specialCase) {
