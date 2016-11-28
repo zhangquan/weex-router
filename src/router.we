@@ -37,11 +37,11 @@
       const unlisten = history.listen(function (location, action)  {
         unlisten()
         var currentUrl = baseURL
-        var platform = config.env.platform
-
-        if(platform == "Web"){
-          currentUrl = addTimestamp(currentUrl)
-        }
+//        var platform = config.env.platform
+//
+//        if(platform == "Web"){
+//          currentUrl = addTimestamp(currentUrl)
+//        }
 
         currentUrl += "#"+location.pathname
         if(action.toLowerCase() == "push"){
