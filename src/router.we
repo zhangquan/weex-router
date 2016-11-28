@@ -35,13 +35,12 @@
       var history = History.createHistory(this.basename, pathUtils.getRealURL(config.bundleUrl), navigator)
 
       const unlisten = history.listen(function (location, action)  {
+
         unlisten()
         var currentUrl = baseURL
-//        var platform = config.env.platform
-//
-//        if(platform == "Web"){
-//          currentUrl = addTimestamp(currentUrl)
-//        }
+        if(config.env.platform == "Web"){
+          currentUrl = addTimestamp(currentUrl)
+        }
 
         currentUrl += "#"+location.pathname
         if(action.toLowerCase() == "push"){
