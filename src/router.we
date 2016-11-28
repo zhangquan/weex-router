@@ -37,7 +37,12 @@
       const unlisten = history.listen(function (location, action)  {
         unlisten()
         var currentUrl = baseURL
-        currentUrl = addTimestamp(currentUrl)
+        var platform = config.env.platform
+
+        if(platform == "Web"){
+          currentUrl = addTimestamp(currentUrl)
+        }
+
         currentUrl += "#"+location.pathname
         if(action.toLowerCase() == "push"){
           Navigator.push(currentUrl, {
@@ -45,7 +50,7 @@
           })
         }
         else if(action.toLowerCase() == "pop"){
-          Navigator.pop(currentUrl, {
+          Navigator.pop({
             animated:true
           })
         }

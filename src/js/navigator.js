@@ -12,7 +12,7 @@ module.exports = {
   },
 
   pop: function(options){
-    options = options? options :{}
+    options = options? options : {animated:"true"}
     const Navigator = history.getNavigator()
     var params = {
       animated : options.animated ? "true" : "false"
