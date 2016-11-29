@@ -15,7 +15,6 @@
       action:"push"
     },
     created: function () {
-      console.log(this)
     },
     methods: {
       handleClick: function (event) {
