@@ -31,23 +31,23 @@ module.exports = {
 
   },
   createPath : function (location)  {
-    const { pathname, search, hash } = location
+    const pathname = location.pathname, search = location.search, hash = location.hash
 
-    let path = pathname || '/'
+    var path = pathname || '/'
 
     if (search && search !== '?')
-      path += (search.charAt(0) === '?' ? search : `?${search}`)
+      path += (search.charAt(0) === '?' ? search : '?'+search)
 
     if (hash && hash !== '#')
-      path += (hash.charAt(0) === '#' ? hash : `#${hash}`)
+      path += (hash.charAt(0) === '#' ? hash : '#'+hash)
 
     return path
   },
 
   parsePath :function (path)  {
-    let pathname = path || '/'
-    let search = ''
-    let hash = ''
+    var pathname = path || '/'
+    var search = ''
+    var hash = ''
 
     const hashIndex = pathname.indexOf('#')
     if (hashIndex !== -1) {
