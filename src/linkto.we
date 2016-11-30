@@ -16,7 +16,7 @@
     },
     methods: {
       handleClick: function (event) {
-        var bundleUrl = decodeURIComponent(this.$getConfig().bundleUrl)
+        var bundleUrl = pathUtils.nomalizeBundleUrl(this.$getConfig().bundleUrl);
         var historyInstance = History.getHistoryInstance(bundleUrl)
         if (historyInstance) {
           if (this.to&&this.action == "push") {

@@ -30,6 +30,14 @@ module.exports = {
     return realURL
 
   },
+  nomalizeBundleUrl: function (bundleUrl) {
+    var url  = decodeURIComponent(bundleUrl)
+    var result = url.match(/(.+)(&random=-\d+\b)/)
+    if(result){
+      url = result[1]
+    }
+    return url;
+  },
 
   addTimestamp: function(url){
     if(/_w_r_t_/.test(url)){

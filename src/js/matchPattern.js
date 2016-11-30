@@ -14,7 +14,7 @@ const getMatcher = function(pattern, exactly)  {
   if (!matcher) {
     const keys = []
     const regex = pathToRegexp(pattern, keys, { end: exactly, strict: true })
-    matcher = { keys, regex }
+    matcher = { keys: keys, regex: regex }
     cache[exactlyStr].set(pattern, matcher)
   }
 
@@ -52,7 +52,7 @@ const matchPattern = function(pattern, location, matchExactly, parent)  {
       const pathname = match[0]
       const isExact = pathname === location.pathname
 
-      return { params, isExact, pathname }
+      return { params: params, isExact: isExact, pathname: pathname }
     } else {
       return null
     }

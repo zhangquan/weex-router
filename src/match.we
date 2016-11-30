@@ -22,7 +22,7 @@ module.exports =  {
   computed: {
     isMatch: {
       get: function() {
-        var bundleUrl = decodeURIComponent(this.$getConfig().bundleUrl);
+        var bundleUrl = pathUtils.nomalizeBundleUrl(this.$getConfig().bundleUrl);
         var location = pathUtils.parsePath(bundleUrl)
         if (this.pattern) {
           location = pathUtils.parsePath(location.hash)
