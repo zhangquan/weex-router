@@ -1,39 +1,45 @@
 var history = require('history')
 
-var __Weex_Router_History;
+var __Weex_Router_History = [];
 
 var History = {
-  getHistoryInstance: function () {
-    return __Weex_Router_History.history
+  getHistoryInstance: function (url) {
+    for ( var i = 0; i < __Weex_Router_History.length; i++) {
+      if (__Weex_Router_History[i].url == url) {
+        return __Weex_Router_History[i]
+      }
+    }
   },
 
-  getBasename: function () {
-    return __Weex_Router_History.basename
+  getBasename: function (url) {
+    return this.getHistoryInstance(url).basename
   },
 
-  getUrl: function () {
-    return __Weex_Router_History.url
+  getUrl: function (url) {
+    return this.getHistoryInstance(url).url
   },
 
-  getNavigator: function () {
-    return __Weex_Router_History.navigator
+  getNavigator: function (url) {
+    return this.getHistoryInstance(url).navigator
   },
 
   createHistory: function (basename, url, navigator) {
-    if (!__Weex_Router_History) {
+    var instance = this.getHistoryInstance(url)
+    if (!instance) {
       var historyInstance = history.createMemoryHistory({
         basename: basename || '',
         forceRefresh: false
       })
 
-      __Weex_Router_History = {
+      instance = {
         history:historyInstance,
-        basename:basename,
         navigator:navigator,
         url: url
       }
+
+      __Weex_Router_History.push(instance)
     }
-    return __Weex_Router_History.history
+    return instance
   }
 }
 

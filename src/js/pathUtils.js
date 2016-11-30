@@ -24,12 +24,24 @@ module.exports = {
     }
 
     if(realURL.endsWith("?")){
-      realURL = realURL.substring(0, v.length-1)
+      realURL = realURL.substring(0, realURL.length-1)
     }
 
     return realURL
 
   },
+
+  addTimestamp: function(url){
+    if(/_w_r_t_/.test(url)){
+      url = url.replace(/_w_r_t_=\d+/, '_w_r_t_='+Date.now())
+    }
+    else {
+      url+="&_w_r_t_="+ Date.now();
+    }
+
+    return url;
+  },
+
   createPath : function (location)  {
     const pathname = location.pathname, search = location.search, hash = location.hash
 
@@ -51,18 +63,18 @@ module.exports = {
 
     const hashIndex = pathname.indexOf('#')
     if (hashIndex !== -1) {
-      hash = pathname.substr(hashIndex)
+      hash = pathname.substr(hashIndex+1)
       pathname = pathname.substr(0, hashIndex)
     }
 
     const searchIndex = pathname.indexOf('?')
     if (searchIndex !== -1) {
-      search = pathname.substr(searchIndex)
+      search = pathname.substr(searchIndex+1)
       pathname = pathname.substr(0, searchIndex)
     }
 
     return {
-      pathname,
+      pathname:pathname,
       search: search === '?' ? '' : search,
       hash: hash === '#' ? '' : hash
     }

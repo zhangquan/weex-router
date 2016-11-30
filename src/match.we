@@ -22,13 +22,11 @@ module.exports =  {
   computed: {
     isMatch: {
       get: function() {
-        var config = this.$getConfig()
-        var url = pathUtils.getRealURL(config.bundleUrl)
-        const pattern = this.pattern
+        var bundleUrl = decodeURIComponent(this.$getConfig().bundleUrl);
+        var location = pathUtils.parsePath(bundleUrl)
         if (this.pattern) {
-          var location = pathUtils.parsePath(url)
-          console.log(location, this.pattern)
-          const match = matchPattern(pattern, location, false, false)
+          location = pathUtils.parsePath(location.hash)
+          const match = matchPattern(this.pattern, location, false, false)
           if (match && match.isExact) {
             return true
           }

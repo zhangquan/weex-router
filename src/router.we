@@ -6,22 +6,8 @@
 
 <script>
   const History = require('./js/history')
-  const navigator = require('@weex-module/navigator')
-  const Navigator = require('./js/navigator')
+  const Navigator = require('@weex-module/navigator')
   const pathUtils = require('./js/pathUtils')
-  function addTimestamp(url){
-    if(/_w_r_t_/.test(url)){
-      url = url.replace(/_w_r_t_=\d+/, '_w_r_t_='+Date.now())
-    }
-    else if(url.indexOf("?") !== -1){
-
-      url+="&_w_r_t_="+ Date.now();
-    }
-    else{
-      url+="?_w_r_t_="+ Date.now();
-    }
-    return url;
-  }
 
   module.exports =  {
     abstract: true,
@@ -31,27 +17,28 @@
     created: function() {
       var config = this.$getConfig()
       var bundleUrl = decodeURIComponent(config.bundleUrl);
-      var baseURL = bundleUrl.split("#")[0]
-      var history = History.createHistory(this.basename, pathUtils.getRealURL(config.bundleUrl), navigator)
+      var historyInstance = History.createHistory(this.basename, bundleUrl, navigator)
 
-      const unlisten = history.listen(function (location, action)  {
-
-        unlisten()
-        var currentUrl = baseURL
+      historyInstance.history.listen(function (location, action)  {
+        var currentLoaction = pathUtils.parsePath(bundleUrl)
+        currentLoaction.hash = location.hash
+        currentLoaction.state = location.state
         if(config.env.platform == "Web"){
-          currentUrl = addTimestamp(currentUrl)
+          currentLoaction.search = pathUtils.addTimestamp(currentLoaction.search)
         }
 
-        currentUrl += "#"+location.pathname
+        var currentUrl = pathUtils.createPath(currentLoaction)
+
         if(action.toLowerCase() == "push"){
-          Navigator.push(currentUrl, {
-            animated:location.state.animated
-          })
+          Navigator.push({
+            url:currentUrl,
+            animated : currentLoaction.state.animated ? "true" : "false"
+          }, function(){})
         }
         else if(action.toLowerCase() == "pop"){
           Navigator.pop({
-            animated:true
-          })
+            animated : "true"
+          }, function(){})
         }
 
       })

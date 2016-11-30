@@ -5,9 +5,7 @@
 </template>
 <script>
   var History = require('./js/history')
-  function createLocationDescriptor (to) {
-    return { pathname: to }
-  }
+  const pathUtils = require('./js/pathUtils')
   module.exports =  {
     data:{
       to:"",
@@ -18,26 +16,24 @@
     },
     methods: {
       handleClick: function (event) {
-        var history = History.getHistoryInstance()
-        if (history) {
+        var bundleUrl = decodeURIComponent(this.$getConfig().bundleUrl)
+        var historyInstance = History.getHistoryInstance(bundleUrl)
+        if (historyInstance) {
           if (this.to&&this.action == "push") {
-            const location = {
-              pathname: this.to,
-              state: {
-                animated: this.animated
-              }
+            const location = pathUtils.parsePath(bundleUrl)
+            location.state = {
+              animated: this.animated
             }
-            history.push(location)
+            location.hash = this.to
+            historyInstance.history.push(location)
           }
           else if(this.action == "pop"){
-            history.goBack()
+            historyInstance.history.goBack()
           }
 
 
         }
       }
-    },
-    destroyed () {
     }
   }
 </script>
