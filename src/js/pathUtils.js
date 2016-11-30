@@ -32,7 +32,7 @@ module.exports = {
   },
   nomalizeBundleUrl: function (bundleUrl) {
     var url  = decodeURIComponent(bundleUrl)
-    var result = url.match(/(.+)(&random=-\d+\b)/)
+    var result = url.match(/(.+)(&random=-?\d+\b)/)
     if(result){
       url = result[1]
     }
