@@ -17,7 +17,7 @@
     created: function() {
       var config = this.$getConfig()
       var bundleUrl = decodeURIComponent(config.bundleUrl);
-      var historyInstance = History.createHistory(this.basename, bundleUrl, navigator)
+      var historyInstance = History.createHistory(this.basename, bundleUrl)
 
       historyInstance.history.listen(function (location, action)  {
         var currentLoaction = pathUtils.parsePath(bundleUrl)

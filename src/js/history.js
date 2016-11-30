@@ -20,10 +20,10 @@ var History = {
   },
 
   getNavigator: function (url) {
-    return this.getHistoryInstance(url).navigator
+
   },
 
-  createHistory: function (basename, url, navigator) {
+  createHistory: function (basename, url) {
     var instance = this.getHistoryInstance(url)
     if (!instance) {
       var historyInstance = history.createMemoryHistory({
@@ -33,7 +33,6 @@ var History = {
 
       instance = {
         history:historyInstance,
-        navigator:navigator,
         url: url
       }
 
