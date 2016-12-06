@@ -15,10 +15,9 @@
       basename:""
     },
     ready: function(){
-      console.log("ready",this)
+
     },
     created: function() {
-      console.log(this)
       var config = this.$getConfig()
       var bundleUrl = pathUtils.nomalizeBundleUrl(config.bundleUrl);
       var historyInstance = History.createHistory(this.basename, bundleUrl)

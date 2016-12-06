@@ -17,10 +17,10 @@ module.exports =  {
   },
   abstract: true,
   created:function () {
-    console.log("match ",this)
+
   },
   ready: function(){
-    console.log("match ready",this)
+
   },
   computed: {
     isMatch: {
