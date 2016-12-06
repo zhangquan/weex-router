@@ -5,7 +5,6 @@
 
 * 声明式
 * 基于组件的可组合性
-* 异步支持
 
 
 ```html
@@ -78,6 +77,13 @@ Router负责监听地址的变化，执行跳转运画，渲染页面
 ```
 
 
+
+- action: 选择路由的类型， push | pop | tab, 默认为push
+
+```html
+<link to="/courses" action="push">课程</link>
+```
+
 - animated: boolean 是否使用动画效果
 
 ```html
@@ -87,7 +93,7 @@ Router负责监听地址的变化，执行跳转运画，渲染页面
 
 ### Match
 
-Match根据路由地址负责渲染或者不渲染它所拥有的组件
+Match根据路由地址负责渲染或者不渲染它所拥有的组件， Match是可以嵌套的
 
 
 - pattern: string
@@ -107,25 +113,6 @@ Match根据路由地址负责渲染或者不渲染它所拥有的组件
  
  
 
-- render: func
-组件除了作为match的子元素之外还可以放在render方法里
-
-```html
-<tempalte>
-<match pattern="/home" render={renderHome}></match>
-</tempalte>
-<script>
-  module.exports = {
-    methods: {
-      renderHome: function(){
-          return User;
-      }
-    }
-  }
-
-</script>
-```
-
 ### Miss
 
 如果所有的Match组件都没有配置到地址，那么Miss组件会被渲染
@@ -142,23 +129,8 @@ Match根据路由地址负责渲染或者不渲染它所拥有的组件
  被渲染的组件将从接受一些路由相关的参数
   - location: 当前匹配的路径.
  
-- render: func
-类似于Match的render方法
 
-```html
-<tempalte>
-  <match pattern="/home" render={renderHome}></match>
-</tempalte>
-<script>
-  module.exports = {
-    methods: {
-      renderHome: function(){
-          return User;
-      }
-    }
-  }
-```
-  
+
 ## JS API
 
  - push(url, options)
@@ -178,6 +150,19 @@ Router.push('/about',{
 ```javascript
 var Router = require("weex-router")
 Router.pop()
+```
+
+
+- tab(options)
+
+```javascript
+var Router = require("weex-router")
+Router.tab('/about', {
+  animated:true,
+    params:{
+      user:"123"
+    }
+})
 ```
 
 
