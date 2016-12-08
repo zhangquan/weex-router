@@ -4,23 +4,23 @@
       <div class="app">
         <div class="nav">
 
-            <linkto  to = "/" class="link">
+            <router-link  to = "/" class="link">
               <text class="title">home</text>
-            </linkto>
-            <linkto  to = "/detail" class="link">
+            </router-link>
+            <router-link  to = "/detail" class="link">
               <text class="title">detail</text>
-            </linkto>
-            <linkto  to = "/about" class="link">
+            </router-link>
+            <router-link  to = "/about" class="link">
               <text class="title">about</text>
-            </linkto>
-            <linkto  action="pop" class="link">
+            </router-link>
+            <router-link  action="pop" class="link">
               <text class="title">back</text>
-            </linkto>
+            </router-link>
         </div>
 
-        <match pattern = "/"><home></home></match>
-        <match pattern = "/detail"><detail></detail></match>
-        <match pattern = "/about"><about></about></match>
+        <router-match pattern = "/"><home></home></router-match>
+        <router-match pattern = "/detail"><detail></detail></router-match>
+        <router-match pattern = "/about"><about></about></router-match>
       </div>
     </router>
   </div>
