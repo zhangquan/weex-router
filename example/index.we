@@ -7,10 +7,10 @@
             <router-link  to = "/" class="link">
               <text class="title">home</text>
             </router-link>
-            <router-link  to = "/detail" class="link">
+            <router-link  to = "/detail/1235" class="link">
               <text class="title">detail</text>
             </router-link>
-            <router-link  to = "/about" class="link">
+            <router-link  to = "/about/me" class="link">
               <text class="title">about</text>
             </router-link>
             <router-link  action="pop" class="link">
@@ -19,8 +19,8 @@
         </div>
 
         <router-match pattern = "/"><home></home></router-match>
-        <router-match pattern = "/detail"><detail></detail></router-match>
-        <router-match pattern = "/about"><about></about></router-match>
+        <router-match pattern = "/detail/:id"><detail></detail></router-match>
+        <router-match pattern = "/about/*"><about></about></router-match>
       </div>
     </router>
   </div>

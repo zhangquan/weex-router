@@ -1,14 +1,17 @@
 <template>
   <div class="about">
     <text class="h1">this is about page</text>
+    <router-match pattern = "/about/me">
+      <div><text>me</text></div>
+    </router-match>
   </div>
 </template>
 
 <script>
-module.export =   {
+module.exports =   {
   name: 'about',
-  create () {
-    console.log(this)
+  create: function () {
+
   }
 }
 </script>

@@ -1,14 +1,19 @@
 <template>
   <div class="detail">
     <text class ="h1">this is detail page</text>
+
   </div>
 </template>
 
 <script>
-  module.export =   {
+
+  var router = require("../index")
+  module.exports =   {
     name: 'detail',
-    create () {
-      console.log(this)
+    create: function () {
+    },
+    ready: function () {
+      console.log(router.params)
     }
   }
 </script>

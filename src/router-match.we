@@ -9,6 +9,8 @@
 var  matchPattern = require('./js/matchPattern')
 var pathUtils = require('./js/pathUtils')
 var History = require('./js/history')
+var navigator = require('./js/navigator')
+
 
 module.exports =  {
   name: 'Match',
@@ -28,9 +30,23 @@ module.exports =  {
         var bundleUrl = pathUtils.nomalizeBundleUrl(this.$getConfig().bundleUrl);
         var location = pathUtils.parsePath(bundleUrl)
         if (this.pattern) {
-          location = pathUtils.parsePath(location.hash)
+          var path;
+          var parentPattern;
+          if(navigator.isMatch){
+            path = navigator.pathname
+            parentPattern = navigator.parentPattern
+          }
+          else {
+            path = location.hash
+          }
+
+          location = pathUtils.parsePath(path)
           const match = matchPattern(this.pattern, location, false, false)
           if (match && match.isExact) {
+            navigator.params = match.params
+            navigator.pathname = match.pathname
+            navigator.isMatch = true
+            navigator.parentPattern = this.pattern
             return true
           }
           else {

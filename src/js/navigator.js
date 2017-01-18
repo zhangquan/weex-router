@@ -2,6 +2,7 @@
 const history = require('./history')
 
 module.exports = {
+
   push: function(url, options){
     options = options? options :{}
     const Navigator = history.getNavigator()
@@ -19,4 +20,5 @@ module.exports = {
     }
     Navigator.pop(params, function(){})
   }
+
 }

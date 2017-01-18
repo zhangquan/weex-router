@@ -52,7 +52,7 @@ const matchPattern = function(pattern, location, matchExactly, parent)  {
       const pathname = match[0]
       const isExact = pathname === location.pathname
 
-      return { params: params, isExact: isExact, pathname: pathname }
+      return { params: params, isExact: isExact, pathname: pathname, keys: matcher.keys }
     } else {
       return null
     }
