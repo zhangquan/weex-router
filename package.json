@@ -1,31 +1,14 @@
 {
-  "name": "weex-router",
-  "version": "0.0.1",
-  "description": "weex router",
-  "author": "bofei.zq",
-  "main":"./index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zhangquan/weex-router.git"
-  },
-  "bugs": {
-    "url": "https://github.com/zhangquan/weex-router/issues"
-  },
-  "scripts": {
-
-  },
-  "dependencies": {
-    "path-to-regexp": "^1.6.0",
-    "query-string": "4.2.3",
-    "history": "^4.3.0"
-  },
-
-  "keywords": [
-    "weex",
-    "webcomponents",
-    "javascript",
-    "html5",
-    "android",
-    "ios"
-  ]
+    "version": "0.1.2",
+    "platform": [
+        "ios",
+        "android"
+    ],
+    "description": "",
+    "keywords": [
+        "weex",
+        "plugin"
+    ],
+    "license": "Apache 2.0",
+    "name": "weex-plugin-weex-router"
 }

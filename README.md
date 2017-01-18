@@ -1,6 +1,7 @@
 # weex-router
 
-参考react-router v4版本的实现，适用于weex的声明式路由。
+适用于weex的声明式路由组件。
+
 特点：
 
 * 声明式
