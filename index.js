@@ -1,4 +1,4 @@
-require('./src/router-match.we')
-require('./src/router-link.we')
-require('./src/router.we')
-module.exports = require("./src/js/navigator")
+require('./js/router-match.we')
+require('./js/router-link.we')
+require('./js/router.we')
+module.exports = require("./js/js/navigator")

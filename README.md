@@ -30,10 +30,10 @@ require('weex-router')
 
 ## Getting Started
 
-安装
+weexpack 安装
 
 ```
-$ npm install weex-router
+$ weexpack plugin add weex-router
 ```
 
 ## 组件

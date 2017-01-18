@@ -20,21 +20,13 @@
 
 <plugin xmlns="http://www.w3.org/ns/widgets"
     id="weex-router"
-    version="0.1.1">
+    version="0.1.2">
     <name>weex-router</name>
     <description></description>
     <license>Apache 2.0</license>
     <keywords>weex,plugin</keywords>
     <repo>https://*.git</repo>
     <issue>https://*</issue>
-     <!-- ios -->
-     <platform name="ios">
 
-     </platform>
-
-     <!-- android -->
-     <platform name="android">
-
-     </platform>
 
 </plugin>
