@@ -20,7 +20,7 @@
 
 <plugin xmlns="http://www.w3.org/ns/widgets"
     id="weex-router"
-    version="0.1.2">
+    version="0.1.3">
     <name>weex-router</name>
     <description></description>
     <license>Apache 2.0</license>
